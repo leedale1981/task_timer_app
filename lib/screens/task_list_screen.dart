@@ -17,9 +17,35 @@ class _TaskListScreenState extends State<TaskListScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Tasks')),
       bottomNavigationBar: const MenuBottom(),
-      body: ListView(children: tasks.map((task) =>
-          TextButton(onPressed: () {}, child: Text(task.name))).toList()
-      )
+      body: Padding(
+          padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+          child: ListView(children: tasks.map((task) =>
+                    TextButton(
+                        style: TextButton.styleFrom(
+                          alignment: AlignmentDirectional.centerStart,
+                          padding: const EdgeInsets.all(20),
+                          foregroundColor: Colors.white,
+                          textStyle: const TextStyle(fontSize: 24),
+                          backgroundColor: Colors.blue
+                        ),
+                        onPressed: () {
+
+                        },
+                        child: Row(
+                          children: [
+                            Text(task.name),
+                            const Icon(Icons.play_arrow)
+                          ]
+                        )
+                    )
+                ).toList())),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
